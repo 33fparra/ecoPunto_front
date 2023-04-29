@@ -12,6 +12,8 @@ import { RecyclableMaterialsSearchComponent } from './private/recyclable-materia
 import { RecyclingActivityRegistrationComponent } from './private/recycling-activity-registration/recycling-activity-registration.component';
 import { AdministrationComponent } from './private/administration/administration.component';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +24,12 @@ import { AdministrationComponent } from './private/administration/administration
     RecyclingHistoryComponent,
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
-    AdministrationComponent
+    AdministrationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GoogleMapsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
