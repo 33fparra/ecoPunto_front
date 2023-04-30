@@ -15,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NavbarComponent } from './private/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RecyclingHistoryComponent,
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
+
   ], exports: [
     MatSnackBarModule
   ],
