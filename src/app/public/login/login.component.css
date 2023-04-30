@@ -1,0 +1,8 @@
+.container{
+    margin-top:175px !important;
+}
+
+.form-control:focus:not(:placeholder-shown) {
+    border-color: rgb(88, 140, 56); /* Reemplaza esto con tu color deseado */
+    box-shadow: 0 0 0 0.2rem rgba(88, 140, 56, 0.25); /* Reemplaza esto con el valor rgba correspondiente */
+  }
