@@ -4,7 +4,9 @@
         <label for="search-input" class="form-label">Ingrese una ubicación:</label>
         <input type="text" class="form-control" id="search-input" placeholder="Ej: Av. Providencia, Santiago">
     </div>
-    <button type="button" class="btn btn-primary mb-4" id="search-btn">Buscar puntos de reciclaje</button>
+    <button type="button" class="btn mb-4" id="search-btn">Buscar puntos de reciclaje</button>
+    <button type="button" class="btn mb-4" id="btnDos">Volver</button>
+
     <div id="map" style="height: 400px;">
         <!-- Aquí se mostrará el mapa interactivo con los puntos de reciclaje -->
         <google-map [center]="center" [zoom]="zoom"></google-map>

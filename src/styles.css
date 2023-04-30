@@ -11,6 +11,12 @@
     font-weight: 600;
 }
 
+#btn-search{
+  background-color: #295B09 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
 #btnDos {
     background-color: #588c38 !important;
     color: white !important;
