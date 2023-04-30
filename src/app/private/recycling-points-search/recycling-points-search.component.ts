@@ -15,3 +15,4 @@ export class RecyclingPointsSearchComponent implements OnInit {
   }
 
 }
+//40.730610, -73.935242

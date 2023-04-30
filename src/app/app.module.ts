@@ -13,6 +13,7 @@ import { RecyclingActivityRegistrationComponent } from './private/recycling-acti
 import { AdministrationComponent } from './private/administration/administration.component';
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { NavbarComponent } from './private/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
     AdministrationComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
