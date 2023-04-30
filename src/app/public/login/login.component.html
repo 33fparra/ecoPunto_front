@@ -1,28 +1,31 @@
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-               
-                <div class="card-header">
-                    <h4 class="text-center"> <img class="justify-content-center align-items-center" src="../../../assets/logo/logo.png" alt="" width="60"> EcoPunto Login</h4>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn" id="btn">Iniciar sesión</button>
-                            <button type="button" class="btn btn-link" id="btnDos">Registrarse</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="text-center">EcoPunto - Inicio de sesión</h4>
         </div>
+        <div class="card-body">
+          <form [formGroup]="formLogin">
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input formControlName="correo" (input)="validacionesDeInput()" type="email" class="form-control"
+                id="email" placeholder="nombre@ejemplo.com">
+              <p *ngIf="correoVacio" style="color: red;">Correo Electronico es requerido</p>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input formControlName="contrasena" (input)="validacionesDeInput()" type="password" class="form-control"
+                id="password" placeholder="Contraseña">
+              <p *ngIf="contrasenaVacia" style="color: red;">contrasena es requerido</p>
+            </div>
+            <div class="d-grid gap-2">
+              <button (click)="logearse()" type="submit" class="btn btn-primary">Iniciar sesión</button>
+              <button (click)="registrar()"type="button" class="btn btn-link">Registrarse</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

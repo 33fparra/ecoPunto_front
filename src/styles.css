@@ -36,3 +36,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #c6f5a871 inset !important; /* Reemplaza #ff5733 con tu color deseado */
   box-shadow: 0 0 0 30px #c6f5a871 inset !important; /* Reemplaza #ff5733 con tu color deseado */
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
