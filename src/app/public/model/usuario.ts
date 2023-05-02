@@ -6,8 +6,8 @@ export interface register {
   nombre: string;
   correoElectronico: string;
   contrasena: string;
-  telefono: string;
   direccion: string;
+  telefono: string;
   rol: {
     nombre: string;
   };

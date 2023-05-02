@@ -12,16 +12,24 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup
-
+  logo: any
   constructor(private login: LoginService,
     private formBuilder: FormBuilder,
     private el: ElementRef,
     private mensaje: MensajeService,
     private router: Router,
-  ) { }
+  ) {
+    if (localStorage.getItem('Login')) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
   ngOnInit(): void {
+    const image = new Image();
+    image.src = '../../../assets/logo/logo.png';
+    image.onload = () => {
+      this.logo = image.src;
+    };
     this.InicializarFormulario()
-
   }
   InicializarFormulario() {
     this.formLogin = this.formBuilder.group({
@@ -53,7 +61,12 @@ export class LoginComponent implements OnInit {
           this.mensaje.MostrarMensaje(data.mensaje)
         } else {
           this.mensaje.MostrarMensaje(data.mensaje)
+          this.router.navigate(['/dashboard']);
+          localStorage.setItem('Login', 'true');
         }
+
+      }, (error) => {
+        this.mensaje.MostrarMensaje('Vuelve a Intentarlo')
 
       })
     }

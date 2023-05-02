@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { register } from '../model/usuario';
 import { RegisterService } from '../service/usuario/register.service';
+import { formulariosInvalido } from 'src/app/util/reutilizable';
+import { MensajeService } from 'src/app/util/service/mensaje.service';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +18,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private register: RegisterService
-  ) { this.inicializarFormulario(); }
+    private register: RegisterService,
+    private el: ElementRef,
+    private mensaje: MensajeService,
+  ) {
+    if (localStorage.getItem('Login')) {
+      this.router.navigate(['/dashboard']);
+    }
+    this.inicializarFormulario();
+  }
 
   ngOnInit(): void {
 
@@ -40,33 +49,34 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar() {
-    this.logs();
     let usuario: register =
     {
       nombre: this.formRegister.get('nombre').value,
       correoElectronico: this.formRegister.get('email').value,
       contrasena: this.formRegister.get('password').value,
-      telefono: this.formRegister.get('telefono').value,
       direccion: this.formRegister.get('direccion').value,
+      telefono: this.formRegister.get('telefono').value,
       rol: {
-        nombre: 'usuario'
+        nombre: 'Usuario'
       }
     }
-
-    console.log(usuario);
     if (this.formRegister.valid) {
-      this.register.registrarUsuario(usuario).subscribe(data => { console.log(data) });
+      this.register.registrarUsuario(usuario).subscribe((data: any) => {
+        console.log(data);
+
+        if (data.mensaje == 'El correo electronico ya esta en uso') {
+          this.mensaje.MostrarMensaje(data.mensaje)
+        } else {
+          this.mensaje.MostrarMensaje(data.mensaje)
+          this.router.navigate(['/login']);
+        }
+      }, (error) => {
+
+        this.mensaje.MostrarMensaje('Error Vuelve a Intentarlo')
+      });
+    } else {
+      formulariosInvalido(this.formRegister, this.el);
     }
 
   }
-
-  logs() {
-    console.log(this.formRegister.get('nombre').value);
-    console.log(this.formRegister.get('email').value);
-    console.log(this.formRegister.get('password').value);
-    console.log(this.formRegister.get('telefono').value);
-    console.log(this.formRegister.get('direccion').value);
-  }
-
-
 }
