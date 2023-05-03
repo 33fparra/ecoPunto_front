@@ -20,3 +20,7 @@ input:focus {
     outline: none; /* Esto elimina el borde predeterminado de Bootstrap */
     box-shadow: 0 0 0 0.2rem rgba(88, 140, 56, 0.25) !important; /* Reemplaza esto con el valor rgba correspondiente */
   }
+
+option:hover {
+    background-color: #588c38; /* Reemplaza #ff5733 con tu color deseado */
+}
