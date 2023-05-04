@@ -9,9 +9,19 @@
     <button type="button" class="btn mb-4" id="search-btn">Buscar puntos de reciclaje</button>
     <button type="button" class="btn mb-4" id="btnDos">Volver</button>
 
-    <div id="map" style="height: 400px;">
-        <!-- Aquí se mostrará el mapa interactivo con los puntos de reciclaje -->
+    <!--<div id="map" style="height: 400px;">
+        <!-- Aquí se mostrará el mapa interactivo con los puntos de reciclaje
         <google-map [center]="center" [zoom]="zoom"></google-map>
-        <!-- agrega los botones -->
-    </div>
+        <!-- agrega los botones 
+    </div>-->
+
+    <google-map height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="addMarker($event)">
+    <map-marker *ngFor="let markerPosition of markerPositions"
+                [position]="markerPosition"
+                [options]="markerOptions"></map-marker>
+    </google-map>
 </div>
