@@ -11,10 +11,12 @@ import { RecyclingHistoryComponent } from './private/recycling-history/recycling
 import { RecyclableMaterialsSearchComponent } from './private/recyclable-materials-search/recyclable-materials-search.component';
 import { RecyclingActivityRegistrationComponent } from './private/recycling-activity-registration/recycling-activity-registration.component';
 import { AdministrationComponent } from './private/administration/administration.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavbarComponent } from './private/navbar/navbar.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +28,19 @@ import { NavbarComponent } from './private/navbar/navbar.component';
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
     AdministrationComponent,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GoogleMapsModule    
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    GoogleMapsModule
+
+  ], exports: [
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

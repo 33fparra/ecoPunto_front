@@ -13,6 +13,5 @@ export class RecyclingPointsSearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
 //40.730610, -73.935242

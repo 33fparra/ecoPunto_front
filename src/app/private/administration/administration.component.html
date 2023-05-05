@@ -22,100 +22,98 @@
     </div>
   </div> -->
 
-<app-navbar></app-navbar>
- <!-- Main content -->
-<div class="container">
+  <app-navbar></app-navbar>
+  <!-- Main content -->
+ <div class="container">
 
- <div class="row" id="gestion">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Gestión de puntos de reciclaje</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <p>Aquí se podrán gestionar los puntos de reciclaje disponibles en el sistema.</p>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-  <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
+  <div class="row" id="gestion">
+   <div class="col-lg-12">
+     <div class="card">
+       <div class="card-header">
+         <h3 class="card-title">Gestión de puntos de reciclaje</h3>
+       </div>
+       <!-- /.card-header -->
+       <div class="card-body">
+         <p>Aquí se podrán gestionar los puntos de reciclaje disponibles en el sistema.</p>
+       </div>
+       <!-- /.card-body -->
+     </div>
+     <!-- /.card -->
+   </div>
+   <!-- /.col-lg-12 -->
+ </div>
+ <!-- /.row -->
 
-<div class="row" id="addPoint">
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Agregar punto de reciclaje</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <label for="nombrePunto">Nombre del punto de reciclaje:</label>
-            <input type="text" class="form-control" id="nombrePunto" placeholder="Ingrese el nombre del punto">
-          </div>
-          <div class="form-group">
-            <label for="direccionPunto">Dirección:</label>
-            <input type="text" class="form-control" id="direccionPunto" placeholder="Ingrese la dirección del punto">
-          </div>
-          <div class="form-group">
-            <label for="telefonoPunto">Teléfono:</label>
-            <input type="tel" class="form-control" id="telefonoPunto" placeholder="Ingrese el número de teléfono">
-          </div>
-          <button type="submit" class="btn" id="btn">Agregar</button>
-        </form>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-  <!-- /.col-lg-6 -->
+ <div class="row" id="addPoint">
+   <div class="col-lg-6">
+     <div class="card">
+       <div class="card-header">
+         <h3 class="card-title">Agregar punto de reciclaje</h3>
+       </div>
+       <!-- /.card-header -->
+       <div class="card-body">
+         <form>
+           <div class="form-group">
+             <label for="nombrePunto">Nombre del punto de reciclaje:</label>
+             <input type="text" class="form-control" id="nombrePunto" placeholder="Ingrese el nombre del punto">
+           </div>
+           <div class="form-group">
+             <label for="direccionPunto">Dirección:</label>
+             <input type="text" class="form-control" id="direccionPunto" placeholder="Ingrese la dirección del punto">
+           </div>
+           <div class="form-group">
+             <label for="telefonoPunto">Teléfono:</label>
+             <input type="tel" class="form-control" id="telefonoPunto" placeholder="Ingrese el número de teléfono">
+           </div>
+           <button type="submit" class="btn" id="btn">Agregar</button>
+         </form>
+       </div>
+       <!-- /.card-body -->
+     </div>
+     <!-- /.card -->
+   </div>
+   <!-- /.col-lg-6 -->
 
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Modificar punto de reciclaje</h3>
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-            <select class="form-control" id="selectPunto">
-              <option>Punto 1</option>
-              <option>Punto 2</option>
-              <option>Punto 3</option>
-              <option>Punto 4</option>
-              <option>Punto 5</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="nuevoNombrePunto">Nuevo nombre:</label>
-            <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto">
-          </div>
-          <div class="form-group">
-            <label for="nuevaDireccionPunto">Nueva dirección:</label>
-            <input type="text" class="form-control" id="nuevaDireccionPunto" placeholder="Ingrese la nueva dirección del punto">
-          </div>
-          <div class="form-group">
-            <label for="nuevoTelefonoPunto">Nuevo teléfono:</label>
-            <input type="text" class="form-control" id="nuevoTelefonoPunto" placeholder="Ingrese el nuevo teléfono">
-        </div>
-        <div class="form-group">
-            <label for="nuevoHorarioPunto">Nuevo horario:</label>
-            <input type="text" class="form-control" id="nuevoHorarioPunto" placeholder="Ingrese el nuevo horario">
-        </div>
-        <button type="submit" class="btn" id="btn">Guardar cambios</button>
-        <button type="button" class="btn" id="btnDos" data-dismiss="modal">Cancelar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>  
+   <div class="col-lg-6">
+     <div class="card">
+       <div class="card-header">
+         <h3 class="card-title">Modificar punto de reciclaje</h3>
+       </div>
+       <!-- /.card-header -->
+       <div class="card-body">
+         <form>
+           <div class="form-group">
+             <label for="selectPunto">Seleccionar punto de reciclaje:</label>
+             <select class="form-control" id="selectPunto">
+               <option>Punto 1</option>
+               <option>Punto 2</option>
+               <option>Punto 3</option>
+               <option>Punto 4</option>
+               <option>Punto 5</option>
+             </select>
+           </div>
+           <div class="form-group">
+             <label for="nuevoNombrePunto">Nuevo nombre:</label>
+             <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto">
+           </div>
+           <div class="form-group">
+             <label for="nuevaDireccionPunto">Nueva dirección:</label>
+             <input type="text" class="form-control" id="nuevaDireccionPunto" placeholder="Ingrese la nueva dirección del punto">
+           </div>
+           <div class="form-group">
+             <label for="nuevoTelefonoPunto">Nuevo teléfono:</label>
+             <input type="text" class="form-control" id="nuevoTelefonoPunto" placeholder="Ingrese el nuevo teléfono">
+         </div>
+         <div class="form-group">
+             <label for="nuevoHorarioPunto">Nuevo horario:</label>
+             <input type="text" class="form-control" id="nuevoHorarioPunto" placeholder="Ingrese el nuevo horario">
+         </div>
+         <button type="submit" class="btn" id="btn">Guardar cambios</button>
+         <button type="button" class="btn" id="btnDos" data-dismiss="modal">Cancelar</button>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
 
-</div>
-
-              
+ </div>
