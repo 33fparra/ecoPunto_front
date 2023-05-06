@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavbarComponent } from './private/navbar/navbar.component';
+import { environment } from '../environments/environment.prod';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,14 +33,14 @@ import { NavbarComponent } from './private/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GoogleMapsModule
-
+    GoogleMapsModule,
   ], exports: [
     MatSnackBarModule
   ],

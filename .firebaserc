@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "eco-punto-test"
+  },
+  "targets": {
+    "eco-punto-test": {
+      "hosting": {
+        "EcoPuntoFront": [
+          "eco-punto-test"
+        ],
+        "eco-punto-test": [
+          "resources"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
