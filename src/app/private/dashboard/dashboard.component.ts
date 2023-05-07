@@ -11,10 +11,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  tipodeUsuario: string = ""
   ngOnInit(): void {
     if (!localStorage.getItem('Login')) {
       this.router.navigate(['/login']);
     }
+    this.tipodeUsuario = localStorage.getItem('TipUser')
   }
 
 }

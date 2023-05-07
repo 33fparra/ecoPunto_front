@@ -1,12 +1,3 @@
-<!-- <div class="container mt-5">
-    <h1 class="text-center mb-4">Ventana principal</h1>
-    <div class="d-flex flex-wrap justify-content-center">
-        <a href="#" class="btn btn-primary m-2" id="puntos-reciclaje-btn">Puntos de reciclaje cercanos</a>
-        <a href="#" class="btn btn-primary m-2" id="historial-reciclaje-btn">Historial de reciclaje</a>
-        <a href="#" class="btn btn-primary m-2" id="materiales-reciclables-btn">Materiales reciclables</a>
-        <a href="#" class="btn btn-primary m-2" id="actividades-reciclaje-btn">Registrar actividad de reciclaje</a>
-    </div>
-</div> -->
 <app-navbar></app-navbar>
 
     <div class="container mt-4">
@@ -46,6 +37,18 @@
                 <h5 class="card-title">Actividades de reciclaje</h5>
                 <p class="card-text">Realiza actividades de reciclaje en los puntos cercanos a tu ubicación y contribuye al cuidado del medio ambiente.</p>
                 <a href="#" class="btn" id="btn">Buscar actividades</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Tipo administrador-->
+        <div class="row mt-4" *ngIf="this.tipodeUsuario =='Administrador'">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Agregar Usuarios</h5>
+                <p class="card-text">Podras Agregar A usuarios de Tipo Administrador o Usuario</p>
+                <a href="#" class="btn" id="btn">Agregar</a>
               </div>
             </div>
           </div>

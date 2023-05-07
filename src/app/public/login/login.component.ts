@@ -60,7 +60,9 @@ export class LoginComponent implements OnInit {
         if (data.mensaje == ' la contraseña o el usuario no existe') {
           this.mensaje.MostrarMensaje(data.mensaje)
         } else {
-          this.mensaje.MostrarMensaje(data.mensaje)
+          localStorage.setItem('TipUser', data.tipUser);
+
+          this.mensaje.MostrarMensaje2(data.mensaje)
           this.router.navigate(['/dashboard']);
           localStorage.setItem('Login', 'true');
         }
