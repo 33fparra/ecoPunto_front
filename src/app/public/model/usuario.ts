@@ -1,3 +1,5 @@
+import { Rol } from "./Rol";
+
 export interface login {
   correoElectronico: string,
   contrasena: string,
@@ -11,4 +13,14 @@ export interface register {
   rol: {
     nombre: string;
   };
+}
+
+
+export class Usuario {
+  nombre: string = "";
+  correoElectronico: string = "";
+  contrasena: string = "";
+  direccion: string = "";
+  telefono: string = "";
+  rol: Rol = null;
 }

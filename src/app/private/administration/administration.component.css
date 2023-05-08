@@ -24,3 +24,8 @@ input:focus {
 option:hover {
     background-color: #588c38; /* Reemplaza #ff5733 con tu color deseado */
 }
+.mapa
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

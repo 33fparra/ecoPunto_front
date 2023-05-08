@@ -37,17 +37,32 @@
          <form>
            <div class="form-group">
              <label for="nombrePunto">Nombre del punto de reciclaje:</label>
-             <input type="text" class="form-control" id="nombrePunto" placeholder="Ingrese el nombre del punto">
+             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del punto" [(ngModel)]="pR.nombre">
            </div>
            <div class="form-group">
              <label for="direccionPunto">Dirección:</label>
-             <input type="text" class="form-control" id="direccionPunto" placeholder="Ingrese la dirección del punto">
+             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese la dirección del punto" [(ngModel)]="pR.direccion">
            </div>
            <div class="form-group">
+            <label for="telefonoPunto">Horario de Atención:</label>
+            <input type="tel" class="form-control" id="horarioAtencion" name="horarioAtencion" placeholder="Ingrese el horario de atención" [(ngModel)]="pR.horarioAtencion">
+          </div>
+           <div class="form-group">
              <label for="telefonoPunto">Teléfono:</label>
-             <input type="tel" class="form-control" id="telefonoPunto" placeholder="Ingrese el número de teléfono">
+             <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" [(ngModel)]="pR.telefono">
            </div>
-           <button type="submit" class="btn" id="btn">Agregar</button>
+           <div class="mapa">
+            <google-map height="400px"
+              width="600px"
+              [center]="center"
+              [zoom]="zoom"
+              (mapClick)="addMarker($event)">
+              <map-marker *ngFor="let markerPosition of markerPositions"
+                          [position]="markerPosition"
+                          [options]="markerOptions"></map-marker>
+              </google-map>
+            </div>
+           <button type="submit" class="btn" id="btn" (click)="guardarPunto()">Agregar</button>
          </form>
        </div>
        <!-- /.card-body -->
@@ -67,11 +82,7 @@
            <div class="form-group">
              <label for="selectPunto">Seleccionar punto de reciclaje:</label>
              <select class="form-control" id="selectPunto">
-               <option>Punto 1</option>
-               <option>Punto 2</option>
-               <option>Punto 3</option>
-               <option>Punto 4</option>
-               <option>Punto 5</option>
+               <option *ngFor="let puntoReciclaje of listPuntoReciclaje">{{puntoReciclaje.nombre}}</option>
              </select>
            </div>
            <div class="form-group">
