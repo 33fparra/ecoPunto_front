@@ -18,6 +18,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavbarComponent } from './private/navbar/navbar.component';
 import { environment } from '../environments/environment.prod';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { environment } from '../environments/environment.prod';
     ReactiveFormsModule,
     HttpClientModule,
     GoogleMapsModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
   ], exports: [
     MatSnackBarModule
   ],
