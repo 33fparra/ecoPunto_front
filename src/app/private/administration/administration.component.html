@@ -128,3 +128,50 @@
  </div>
 
  </div>
+
+ <div>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Punto Reciclaje </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="horario">
+      <th mat-header-cell *matHeaderCellDef> Horario de Atención </th>
+      <td mat-cell *matCellDef="let element"> {{element.horarioAtencion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef> Dirección </th>
+      <td mat-cell *matCellDef="let element"> dirección </td> <!-- {{element.direccion}}-->
+    </ng-container>
+
+    <ng-container matColumnDef="latitud">
+      <th mat-header-cell *matHeaderCellDef> Latitud </th>
+      <td mat-cell *matCellDef="let element"> {{element.latitud}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="longitud">
+      <th mat-header-cell *matHeaderCellDef> Longitud </th>
+      <td mat-cell *matCellDef="let element"> {{element.longitud}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon aria-hidden="false" aria-label="Editar" class="editar">edit</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Eliminar" class="eliminar">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="nombreDeLasColumnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: nombreDeLasColumnas;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+ </div>

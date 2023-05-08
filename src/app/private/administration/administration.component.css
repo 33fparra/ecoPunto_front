@@ -3,3 +3,21 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+th{
+    text-align: center;
+}
+
+.editar{
+    cursor: pointer;
+    color: khaki;
+}
+
+.eliminar{
+    cursor: pointer;
+    color: red;
+}
+
+table{
+    width: 100%;
+}

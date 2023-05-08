@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavbarComponent } from './private/navbar/navbar.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +41,10 @@ import { NavbarComponent } from './private/navbar/navbar.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GoogleMapsModule
-
+    GoogleMapsModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
   ], exports: [
     MatSnackBarModule
   ],
