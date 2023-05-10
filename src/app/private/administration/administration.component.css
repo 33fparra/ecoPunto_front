@@ -47,3 +47,7 @@ th{
 table{
     width: 100%;
 }
+.abajo{
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
+}

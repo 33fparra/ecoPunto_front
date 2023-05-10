@@ -21,6 +21,7 @@ import { environment } from '../environments/environment.prod';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserManagementComponent } from './private/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
     AdministrationComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserManagementComponent
   ],
   imports: [
     
