@@ -61,6 +61,8 @@ export class RegisterComponent implements OnInit {
       }
     }
     if (this.formRegister.valid) {
+      console.log(usuario);
+
       this.register.registrarUsuario(usuario).subscribe((data: any) => {
         console.log(data);
 

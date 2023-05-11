@@ -9,6 +9,7 @@ import { RecyclingHistoryComponent } from './private/recycling-history/recycling
 import { RecyclableMaterialsSearchComponent } from './private/recyclable-materials-search/recyclable-materials-search.component';
 import { RecyclingActivityRegistrationComponent } from './private/recycling-activity-registration/recycling-activity-registration.component';
 import { AdministrationComponent } from './private/administration/administration.component';
+import { UserManagementComponent } from './private/user-management/user-management.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'recyclable-materials-search', component: RecyclableMaterialsSearchComponent },
   { path: 'recycling-activity-registration', component: RecyclingActivityRegistrationComponent },
   { path: 'administration', component: AdministrationComponent },
+  { path: 'user-management', component: UserManagementComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
   <div class="container">
-  <h1>Bienvenido (aca va el ROL), (Aca va el nombreUsuario):</h1>  
+  <h1>{{this.titleCab}}</h1>
   </div>
 
     <div class="container mt-4">
@@ -53,7 +53,7 @@
                 <h5 class="card-title">Agregar Usuarios</h5>
                 <p class="card-text">Podras Agregar A usuarios de Tipo Administrador o Usuario</p><br>
                 <p> Esta tarjeta solo debe aparecer si el usuario es administrador y abre la ventana administrador</p>
-                <a routerLink="/administration" class="btn" id="btn">Agregar</a>
+                <a routerLink="/user-management" class="btn" id="btn">Agregar</a>
               </div>
             </div>
           </div>

@@ -1,0 +1,15 @@
+th{
+  text-align: center;
+}
+table{
+  width: 100%;
+}
+.editar{
+  cursor: pointer;
+  color: khaki;
+}
+
+.eliminar{
+  cursor: pointer;
+  color: red;
+}

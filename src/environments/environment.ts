@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  HOST: 'https://ecopunto.fly.dev/rest/v1',
+  HOST: 'http://localhost:8080/rest/v1',
 
 
 };
