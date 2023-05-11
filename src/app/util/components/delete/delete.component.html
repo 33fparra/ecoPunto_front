@@ -1,0 +1,15 @@
+<div class="titulo">
+    {{titulo}}
+</div>
+<div class="cuerpo">
+    <p>{{subtitulo}}</p>
+    <div class="contenedor_botones">
+        <button class="check" (click)="close('CONFIRMAR')">
+            <mat-icon >check</mat-icon>
+        </button>
+    
+        <button class="cancel" (click)="close('CANCELAR')">
+            <mat-icon >cancel</mat-icon>
+        </button>
+    </div>
+</div>

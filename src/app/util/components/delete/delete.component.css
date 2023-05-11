@@ -1,0 +1,42 @@
+.contenedor_botones{
+    display: flex; 
+    justify-content: space-around;
+}
+
+p{
+    text-align: center;
+}
+
+.check{
+    background-color: #588C38;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.check:focus{
+    border: none;
+}
+
+.cancel{
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.titulo
+{
+    padding: 5px 10px;
+    background-color: #588C38;
+    color: white;
+    font-weight: bold;
+}
+
+.cuerpo{
+    padding: 10px 0;
+    border: 1px solid #588C38 ;
+    border-top: 0;
+}
