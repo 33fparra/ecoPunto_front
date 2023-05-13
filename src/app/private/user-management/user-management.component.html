@@ -24,33 +24,48 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Modificar Usuario</h3>
+      <h3 class="card-title">{{title}}</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <form>
+      <form [formGroup]="formAdmin">
         <div class="form-group">
-          <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-          <select class="form-control" id="selectPunto">
-            <!-- <option *ngFor="let  of ">{{usuario.nombre}}</option> -->
-          </select>
+          <label for="nuevoNombrePunto">{{nomUser}}</label>
+          <input formControlName="nombre" type="text" class="form-control" id=""
+            placeholder="Ingrese el nuevo nombre del punto">
         </div>
+        <br>
+
         <div class="form-group">
-          <label for="nuevoNombrePunto">Nuevo nombre:</label>
-          <input type="text" class="form-control" id="" placeholder="Ingrese el nuevo nombre del punto">
+          <label for="nuevoNombrePunto">{{correo}}</label>
+          <input formControlName="correo" type="text" class="form-control" id=""
+            placeholder="Ingrese el nuevo nombre del punto">
         </div>
+        <br>
+
         <div class="form-group">
-          <label for="nuevaDireccionPunto">Nueva dirección:</label>
-          <input type="text" class="form-control" id="" placeholder="Ingrese la nueva dirección del punto">
-        </div>
-        <div class="form-group">
-          <label for="nuevoTelefonoPunto">Nuevo teléfono:</label>
-          <input type="text" class="form-control" id="" placeholder="Ingrese el nuevo teléfono">
+          <label for="nuevoNombrePunto">{{contrasenia}}</label>
+          <input formControlName="contrasenia" type="text" class="form-control" id=""
+            placeholder="Ingrese el nuevo nombre del punto">
         </div>
 
-        <button type="submit" class="btn" id="btn">Guardar cambios</button>
-        <button type="button" class="btn" id="btnDos" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn" id="btnDos" data-dismiss="modal">Volver</button>
+        <br>
+        <div class="form-group">
+          <label for="nuevaDireccionPunto">{{direccion}}</label>
+          <input formControlName="direccion" type="text" class="form-control" id=""
+            placeholder="Ingrese la nueva dirección del punto">
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="nuevoTelefonoPunto">{{telefono}}</label>
+          <input formControlName="telefono" type="text" class="form-control" id=""
+            placeholder="Ingrese el nuevo teléfono">
+        </div>
+        <br>
+        <button type="submit" class="btn" id="btn" style="margin-right: 10px;">{{boton}}</button>
+        <button type="button" class="btn" id="btnDos" data-dismiss="modal" style="margin-right: 10px;">Cancelar</button>
+        <button type="button" routerLink="/dashboard" class="btn" id="btnDos" data-dismiss="modal">Volver</button>
       </form>
     </div>
   </div>
@@ -94,8 +109,12 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>acciones</th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon aria-hidden="false" aria-label="Editar" class="editar">edit</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="Eliminar" class="eliminar">delete</mat-icon>
+        <button *ngIf="editar" (click)="FuncionEditar(element)">
+          <mat-icon aria-hidden="false" aria-label="Editar"class="editar">edit</mat-icon></button>
+
+        <button *ngIf="!editar"(click)="FuncionCloseEdit()"><mat-icon>close</mat-icon></button>
+        <!--   <button [disabled]="(element.id != this.editarid) && !this.editar"><mat-icon aria-hidden="false"
+            aria-label="Eliminar" class="eliminar">delete</mat-icon></button> -->
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="nombreDeLasColumnas"></tr>
