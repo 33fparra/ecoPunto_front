@@ -81,25 +81,25 @@
          <form>
            <div class="form-group">
              <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-             <select class="form-control" id="selectPunto">
-               <option *ngFor="let puntoReciclaje of listPuntoReciclaje">{{puntoReciclaje.nombre}}</option>
+             <select class="form-control" id="selectPunto" [(ngModel)]="prselect.id" (change)="seleccionar()">
+               <option *ngFor="let puntoReciclaje of listPuntoReciclaje" [value]="puntoReciclaje.id">{{puntoReciclaje.nombre}}</option>
              </select>
            </div>
            <div class="form-group">
              <label for="nuevoNombrePunto">Nuevo nombre:</label>
-             <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto">
+             <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto" [(ngModel)]="prselect.nombre">
            </div>
            <div class="form-group">
              <label for="nuevaDireccionPunto">Nueva dirección:</label>
-             <input type="text" class="form-control" id="nuevaDireccionPunto" placeholder="Ingrese la nueva dirección del punto">
+             <input type="text" class="form-control" id="nuevaDireccionPunto" placeholder="Ingrese la nueva dirección del punto" [(ngModel)]="prselect.direccion">
            </div>
            <div class="form-group">
              <label for="nuevoTelefonoPunto">Nuevo teléfono:</label>
-             <input type="text" class="form-control" id="nuevoTelefonoPunto" placeholder="Ingrese el nuevo teléfono">
+             <input type="text" class="form-control" id="nuevoTelefonoPunto" placeholder="Ingrese el nuevo teléfono" [(ngModel)]="prselect.telefono">
          </div>
          <div class="form-group">
              <label for="nuevoHorarioPunto">Nuevo horario:</label>
-             <input type="text" class="form-control" id="nuevoHorarioPunto" placeholder="Ingrese el nuevo horario">
+             <input type="text" class="form-control" id="nuevoHorarioPunto" placeholder="Ingrese el nuevo horario" [(ngModel)]="prselect.horarioAtencion">
          </div>
          <button type="submit" class="btn" id="btn">Guardar cambios</button>
          <button type="button" class="btn" id="btnDos" data-dismiss="modal">Cancelar</button>
@@ -149,7 +149,7 @@
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
         <mat-icon aria-hidden="false" aria-label="Editar" class="editar">edit</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="Eliminar" class="eliminar">delete</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Eliminar" class="eliminar" (click)="abrirModal(element)">delete</mat-icon>
       </td>
     </ng-container>
 

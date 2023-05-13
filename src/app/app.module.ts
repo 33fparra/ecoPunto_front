@@ -22,6 +22,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserManagementComponent } from './private/user-management/user-management.component';
+import { DeleteComponent } from './util/components/delete/delete.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -35,10 +38,11 @@ import { UserManagementComponent } from './private/user-management/user-manageme
     RecyclingActivityRegistrationComponent,
     AdministrationComponent,
     NavbarComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    DeleteComponent
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -48,7 +52,8 @@ import { UserManagementComponent } from './private/user-management/user-manageme
     GoogleMapsModule,
     MatTableModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ], exports: [
     MatSnackBarModule
   ],
