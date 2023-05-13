@@ -17,6 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NavbarComponent } from './private/navbar/navbar.component';
+import { environment } from '../environments/environment.prod';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserManagementComponent } from './private/user-management/user-management.component';
+import { DeleteComponent } from './util/components/delete/delete.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,17 +37,23 @@ import { NavbarComponent } from './private/navbar/navbar.component';
     RecyclableMaterialsSearchComponent,
     RecyclingActivityRegistrationComponent,
     AdministrationComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserManagementComponent,
+    DeleteComponent
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GoogleMapsModule
-
+    GoogleMapsModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatDialogModule
   ], exports: [
     MatSnackBarModule
   ],

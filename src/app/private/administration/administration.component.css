@@ -1,5 +1,53 @@
+#gestion{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#addPoint{
+    padding-top: 10px !important;
+}
+button{
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+
+input:focus {
+    border-color: rgb(88, 140, 56); /* Reemplaza esto con tu color deseado */
+    /* border-color: red; */
+    outline: none; /* Esto elimina el borde predeterminado de Bootstrap */
+    box-shadow: 0 0 0 0.2rem rgba(88, 140, 56, 0.25) !important; /* Reemplaza esto con el valor rgba correspondiente */
+  }
+
+option:hover {
+    background-color: #588c38; /* Reemplaza #ff5733 con tu color deseado */
+}
 .mapa
 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+th{
+    text-align: center;
+}
+
+.editar{
+    cursor: pointer;
+    color: khaki;
+}
+
+.eliminar{
+    cursor: pointer;
+    color: red;
+}
+
+table{
+    width: 100%;
+}
+.abajo{
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
 }

@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="container ">
+  <div class="row" id="gestion">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Gestión de Usuarios</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>Aquí se podrán gestionar todos los Usuarios desde el punto de vista del administrador.</p>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{title}}</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form [formGroup]="formAdmin">
+        <div class="form-group">
+          <label for="nuevoNombrePunto">{{nomUser}}</label>
+          <input formControlName="nombre" type="text" class="form-control" id=""
+            placeholder="Ingrese el nombre del Usuario">
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="nuevoNombrePunto">{{correo}}</label>
+          <input formControlName="correo" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required class="form-control" id=""
+            placeholder="Ingrese el  Correo del Usuario">
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="nuevoNombrePunto">{{contrasenia}}</label>
+          <input formControlName="contrasenia" type="password" class="form-control" id=""
+            placeholder="Ingrese la contraseña del Usuario">
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label for="nuevaDireccionPunto">{{direccion}}</label>
+          <input formControlName="direccion" type="text" class="form-control" id=""
+            placeholder="Ingrese la  dirección Usuario">
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="nuevoTelefonoPunto">{{telefono}}</label>
+          <input formControlName="telefono" [maxlength]="9" type="text" class="form-control" id="" placeholder="Ingrese el  teléfono">
+        </div>
+        <div class="form-group">
+
+          <label for="nuevoTelefonoPunto">{{rol}}</label>
+          <select formControlName="rol" class="form-control">
+            <option value="Usuario">Usuario</option>
+            <option value="Administrador">Administrador</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn" id="btn" style="margin-right: 10px;"
+          (click)="FuncionButton()">{{boton}}</button>
+        <button (click)="FuncionCancelar()" type="button" class="btn" id="btnDos" data-dismiss="modal"
+          style="margin-right: 10px;">Cancelar</button>
+        <button type="button" routerLink="/dashboard" class="btn" id="btnDos" data-dismiss="modal">Volver</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>nombre</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="correoElectronico">
+      <th mat-header-cell *matHeaderCellDef> correo electronico </th>
+      <td mat-cell *matCellDef="let element"> {{element.correoElectronico}} </td>
+    </ng-container>
+    <ng-container matColumnDef="contrasena">
+      <th mat-header-cell *matHeaderCellDef> contraseña</th>
+      <td mat-cell *matCellDef="let element"> {{element.contrasena}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef>direccion</th>
+      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef>telefono</th>
+      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef>rol</th>
+      <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="FuncionEditar(element)" *ngIf="element !==dataRow">
+          <mat-icon aria-hidden="false" aria-label="Editar" class="editar">edit</mat-icon></button>
+
+        <button (click)="FuncionCloseEdit()" *ngIf="element ===dataRow"><mat-icon>close</mat-icon></button>
+
+        <button [disabled]="element ===dataRow" (click)="FuncionEliminar(element)"><mat-icon aria-hidden="false"
+            aria-label="Eliminar" class="eliminar">delete</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="nombreDeLasColumnas"></tr>
+    <tr mat-row *matRowDef="let element; columns: nombreDeLasColumnas;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

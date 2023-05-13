@@ -17,6 +17,7 @@ export interface register {
 
 
 export class Usuario {
+  id?:string;
   nombre: string = "";
   correoElectronico: string = "";
   contrasena: string = "";
