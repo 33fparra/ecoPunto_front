@@ -42,7 +42,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     DeleteComponent
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

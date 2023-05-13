@@ -16,4 +16,10 @@ export class UseradminService {
     return this.http.get<any[]>(baseUrl + '/' + 'usuarios' + '/' + 'listar' + "/" + 'todo')
 
   }
+  eliminarUsuario(id: any): Observable<any[]> {
+    return this.http.delete<any[]>(baseUrl + '/' + 'usuarios' + '/' + 'eliminar' + "/" + id);
+  }
+  editarUsuario(id: any, body: any): Observable<any[]> {
+    return this.http.put<any[]>(baseUrl + '/' + 'usuarios' + '/' + 'editar' + "/" + id, body);
+  }
 }
