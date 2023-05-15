@@ -1,36 +1,36 @@
-import { Usuario, register } from "./usuario";
+import { Usuario } from "./usuario";
 
 export class PuntoReciclajeDTO
 {
     id : number = 0;  
-    direccion : String = ""; 
-    horarioAtencion : String = ""; 
+    direccion : string = ""; 
+    horarioAtencion : string = ""; 
     latitud : number = 0;
     longitud : number = 0;
-    nombre : String = ""; 
-    telefono : String = "";
+    nombre : string = ""; 
+    telefono : string = "";
     usuario_id : number = 0;
 }
 
 export class PuntoReciclaje
 {
     id : number = 0;  
-    direccion : String = ""; 
-    horarioAtencion : String = ""; 
+    direccion : string = ""; 
+    horarioAtencion : string = ""; 
     latitud : number = 0;
     longitud : number = 0;
-    telefono : String = "";
-    nombre : String = ""; 
+    telefono : string = "";
+    nombre : string = ""; 
     usuario_id : Usuario = null;
 }
 
 export interface PuntoReciclajeInterface
 {
     id : number;  
-    direccion : String ; 
-    horarioAtencion : String 
+    direccion : string ; 
+    horarioAtencion : string 
     latitud : number;
     longitud : number;
-    telefono : String;
-    nombre : String; 
+    telefono : string;
+    nombre : string; 
 }

@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
           this.mensaje.MostrarMensaje(data.mensaje)
         } else {
           localStorage.setItem('TipUser', data.tipUser);
+          localStorage.setItem('id', data.id);
           localStorage.setItem('user', data.mensaje.split(':')[1].trim());
           localStorage.setItem('email', this.formLogin.get("correo").value);
           this.mensaje.MostrarMensaje2(data.mensaje)

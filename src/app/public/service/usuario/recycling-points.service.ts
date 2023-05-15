@@ -21,4 +21,14 @@ export class RecyclingPointsService {
   {
     return this.http.post<any>(baseUrl + '/' + 'puntoReciclaje' + '/' + 'guardar', puntoReciclaje);
   }
+
+  actualizar(puntoReciclaje : PuntoReciclajeDTO): Observable<any>
+  {
+    return this.http.put<any>(baseUrl + '/' + 'puntoReciclaje' + '/' + 'actualizar/' + puntoReciclaje.id, puntoReciclaje);
+  }
+
+  eliminar(id : number)
+  {
+    return this.http.delete<any>(baseUrl + '/' + 'puntoReciclaje' + '/' + 'eliminar/' + id);
+  }
 }
