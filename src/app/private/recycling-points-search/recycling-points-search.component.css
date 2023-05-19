@@ -1,0 +1,10 @@
+button{
+    margin-right: 10px;
+}
+
+input:focus {
+    border-color: rgb(88, 140, 56); /* Reemplaza esto con tu color deseado */
+    /* border-color: red; */
+    outline: none; /* Esto elimina el borde predeterminado de Bootstrap */
+    box-shadow: 0 0 0 0.2rem rgba(88, 140, 56, 0.25) !important; /* Reemplaza esto con el valor rgba correspondiente */
+  }

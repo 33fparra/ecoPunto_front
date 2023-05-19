@@ -24,11 +24,6 @@ input:focus {
 option:hover {
     background-color: #588c38; /* Reemplaza #ff5733 con tu color deseado */
 }
-.mapa
-{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
 th{
     text-align: center;
@@ -50,4 +45,13 @@ table{
 .abajo{
     margin-bottom: 20px !important;
     padding-bottom: 20px !important;
+}
+
+.map-responsive {
+    position: relative;
+    overflow: hidden;
+    height: 100% !important;
+    width: 100% !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

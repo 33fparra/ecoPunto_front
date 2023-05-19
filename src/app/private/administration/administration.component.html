@@ -51,9 +51,8 @@
              <label for="telefonoPunto">Teléfono:</label>
              <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" [(ngModel)]="pR.telefono">
            </div>
-           <div class="mapa">
-            <google-map height="400px"
-              width="600px"
+           <div class="map-responsive">
+            <google-map 
               [center]="center"
               [zoom]="zoom"
               (mapClick)="addMarker($event)">
