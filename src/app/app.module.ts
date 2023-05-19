@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserManagementComponent } from './private/user-management/user-management.component';
 import { DeleteComponent } from './util/components/delete/delete.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MaterialPointComponent } from './private/material-point/material-point.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AdministrationComponent,
     NavbarComponent,
     UserManagementComponent,
-    DeleteComponent
+    DeleteComponent,
+    MaterialPointComponent
   ],
   imports: [
     

@@ -58,3 +58,21 @@ input:-webkit-autofill:active {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-snack-bar-container {
+  background-color: #ffffffbc !important;
+  color: #295B09 !important;
+
+}
+
+.my-snackbar {
+  background-color: #ffffffbc !important;
+  color: #295B09 !important;
+  font-weight: 700 !important;
+}
+
+.my-snackbar .mat-simple-snackbar-action {
+  color:  rgb(88, 140, 56);
+  font-weight: 800 !important;
+}

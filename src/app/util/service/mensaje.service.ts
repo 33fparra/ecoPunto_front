@@ -10,14 +10,16 @@ export class MensajeService {
   ) { }
   MostrarMensaje(message: string) {
     this.snackBar.open(message, 'AVISO', {
-      duration: 2000,
+      duration: 3000,
+      verticalPosition: 'top',
+      panelClass: ['my-snackbar']
     });
   }
   MostrarMensaje2(message: string) {
     this.snackBar.open(message, 'AVISO', {
-      duration: 2000,
+      duration: 3000,
       verticalPosition: 'top',
-
+      panelClass: ['my-snackbar']
     });
   }
 }
