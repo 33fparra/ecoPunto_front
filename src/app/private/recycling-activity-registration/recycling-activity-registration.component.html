@@ -2,23 +2,28 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Registro de actividad de reciclaje</h1>
-    <form id="reciclaje-form" [formGroup]="xd">
+    <form id="reciclaje-form" [formGroup]="formulario">
         <div class="mb-3">
             <label for="material" class="form-label">Material</label>
             <select class="form-control" formControlName="material" id="material">
-                <option *ngFor="let data of []" value="">
-                    
+                <option *ngFor="let material of listaMateriales" [value]="material.materialReciclableId">
+                    {{material.nombreMaterialReciclable}}
                 </option>
             </select>
             <!-- <input type="text" class="form-control" id="material" required formControlName="material"> -->
         </div>
         <div class="mb-3">
             <label for="cantidad" class="form-label">Cantidad</label>
-            <input type="number" class="form-control" id="cantidad" required formControlName="cantidad">
+            <input type="number" class="form-control" id="cantidad" required formControlName="cantidad" min="1">
         </div>
         <div class="mb-3">
             <label for="punto-reciclaje" class="form-label">Punto de reciclaje</label>
-            <input type="text" class="form-control" id="punto-reciclaje" required formControlName="puntoReciclaje">
+            <select  class="form-control" formControlName="puntoReciclaje" id="punto-reciclaje">
+                <option *ngFor="let material of listaPuntosReciclajeYMaterial" [value]="material.puntoMaterialId">
+                    {{material.puntoReciclajeNombre}} - {{material.puntoMaterialNombre}}
+                </option>
+            </select>
+            <!-- <input type="text" class="form-control" id="punto-reciclaje" required formControlName="puntoReciclaje"> -->
         </div>
         <div class="mb-3">
             <label for="fecha" class="form-label">Fecha</label>

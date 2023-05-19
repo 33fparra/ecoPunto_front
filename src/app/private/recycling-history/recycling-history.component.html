@@ -9,11 +9,18 @@
                 <th scope="col">Material</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Punto de reciclaje</th>
+                <th scope="col">Punto de material</th>
             </tr>
         </thead>
         <tbody id="historial-table">
             <!-- Aquí se mostrarán las filas del historial de reciclaje -->
-
+            <tr *ngFor="let data of listaHistorialReciclajePorUsuario">
+                <th>{{data.fecha}}</th>
+                <th>{{data.materialReciclableNombre}}</th>
+                <th>{{data.cantidad}}</th>
+                <th>{{data.puntoReciclajeNombre}}</th>
+                <th>{{data.puntoMaterialNombre}}</th>
+            </tr>
             <!-- Recuerda poner los botones -->
         </tbody>
     </table>

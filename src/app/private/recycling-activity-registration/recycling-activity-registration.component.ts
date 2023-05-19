@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { ActividadReciclaje } from 'src/app/public/model/ActividadReciclaje';
+import { ActividadReciclajeDTO } from 'src/app/public/model/ActividadReciclaje';
+import { MaterialReciclable } from 'src/app/public/model/Material';
 import { PuntoReciclajeInterface } from 'src/app/public/model/PuntoReciclaje';
+import { PuntoReciclajeYMaterial } from 'src/app/public/model/PuntoReciclajeYMaterial';
 import { RecyclingActivityRegistrationService } from 'src/app/public/service/usuario/recycling-activity-registration.service';
 import { RecyclingPointsService } from 'src/app/public/service/usuario/recycling-points.service';
+import { MensajeService } from 'src/app/util/service/mensaje.service';
 
 @Component({
   selector: 'app-recycling-activity-registration',
@@ -17,17 +20,38 @@ export class RecyclingActivityRegistrationComponent implements OnInit {
 
   constructor(private recyclingPoints : RecyclingPointsService,
               private formBuilder: FormBuilder,
-              private recyclingActivityRegistrationService : RecyclingActivityRegistrationService) { }
+              private recyclingActivityRegistrationService : RecyclingActivityRegistrationService,
+              private mensajeService : MensajeService) { }
 
-  xd = this.formBuilder.group({
-    material: [''],
+  listaMateriales : MaterialReciclable[] = [];
+  listaPuntosReciclajeYMaterial : PuntoReciclajeYMaterial[] = [];
+
+  formulario = this.formBuilder.group({
+    material: [],
     cantidad: [1],
-    puntoReciclaje: [''],
+    puntoReciclaje: [],
     fecha: ['']
   })
 
+
   ngOnInit(): void {
     this.listarPuntos();
+    this.recyclingActivityRegistrationService.listarMaterialReciclable().subscribe(data =>
+    {
+      this.listaMateriales = data;
+      this.formulario.get('material').setValue(this.listaMateriales[0]?.materialReciclableId);
+    });
+
+    this.recyclingActivityRegistrationService.listarPuntosMaterialYReciclaje().subscribe((data : PuntoReciclajeYMaterial[]) =>
+    {
+     this.listaPuntosReciclajeYMaterial = data;
+     this.formulario.get('puntoReciclaje').setValue(this.listaPuntosReciclajeYMaterial[0]?.puntoMaterialId);
+    })
+
+    const fechaActual = new Date();
+    const fechaActualISO = fechaActual.toISOString().substring(0, 10); // Obtener la fecha en formato ISO
+
+    this.formulario.get('fecha').setValue(fechaActualISO);
   }
 
   async listarPuntos()
@@ -35,24 +59,44 @@ export class RecyclingActivityRegistrationComponent implements OnInit {
     await firstValueFrom(this.recyclingPoints.listar()).then(data=>
     {
       this.listPuntoReciclaje = data;
-      console.log(this.listPuntoReciclaje);
     });
+
   }
 
   registrar()
   {
-    let puntoReciclaje = this.listPuntoReciclaje.find(elemento => elemento.nombre.toUpperCase() === this.xd.get('puntoReciclaje').value.toUpperCase().trim())
-    console.log(puntoReciclaje)
-    console.log(this.xd.value)
+    let puntoReciclajeYMaterial = this.listaPuntosReciclajeYMaterial.find(item => item.puntoMaterialId == this.formulario.get('puntoReciclaje').value)
 
-    let actividadReciclaje : ActividadReciclaje = new ActividadReciclaje();
-    actividadReciclaje.cantidad = this.xd.get('cantidad').value;
-    actividadReciclaje.fecha = this.xd.get('fecha').value;
-    actividadReciclaje.tipoMaterial = 1;
-
-    this.recyclingActivityRegistrationService.guardar(actividadReciclaje).subscribe(data =>
+    if (puntoReciclajeYMaterial == undefined)
     {
-      console.log(data);
+      this.mensajeService.MostrarMensaje("Seleccione un punto reciclaje");
+      return;
+    }
+
+    let actividadReciclaje : ActividadReciclajeDTO = new ActividadReciclajeDTO();
+    actividadReciclaje.cantidad = this.formulario.get('cantidad').value;
+    actividadReciclaje.fecha = this.formulario.get('fecha').value;
+    actividadReciclaje.materialesReciclableId = this.formulario.get('material').value;
+    actividadReciclaje.puntoMaterialId = puntoReciclajeYMaterial.puntoMaterialId;
+    actividadReciclaje.usuario_id = Number(localStorage.getItem('id'));
+    this.recyclingActivityRegistrationService.guardar(actividadReciclaje).subscribe(
+    {
+
+      next: data =>
+      {
+        this.mensajeService.MostrarMensaje(data?.mensaje);
+      }, 
+      error: error =>
+      {
+        if(error.error.mensaje != undefined)
+        {
+          this.mensajeService.MostrarMensaje(error.error.mensaje); 
+          return;
+        }
+
+        this.mensajeService.MostrarMensaje("Ocurrió un error, por favor intente más tarde!");
+      }
+      
     });
   }
 }
