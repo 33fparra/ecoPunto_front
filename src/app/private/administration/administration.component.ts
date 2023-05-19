@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PuntoReciclaje, PuntoReciclajeDTO, PuntoReciclajeInterface } from 'src/app/public/model/PuntoReciclaje';
+import { PuntoReciclajeDTO, PuntoReciclajeInterface } from 'src/app/public/model/PuntoReciclaje';
 import { RecyclingPointsService } from 'src/app/public/service/usuario/recycling-points.service';
 import { MensajeService } from 'src/app/util/service/mensaje.service';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/util/components/delete/delete.component';
+import { FormBuilder } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-administration',
@@ -21,26 +23,29 @@ export class AdministrationComponent implements OnInit
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   zoom = 6;
 
-  tipodeUsuario: string = ""
-  nombUsuario:string=""
-  titleCab: string = ''
+  tipodeUsuario: string = "";
+  nombUsuario:string="";
+  titleCab: string = '';
+  
 
   pR : PuntoReciclajeDTO = new PuntoReciclajeDTO();
   listPuntoReciclaje : PuntoReciclajeInterface[] = [];
-  prselect : PuntoReciclajeInterface = 
-  {
-    id: 0,
-    direccion: '',
-    horarioAtencion: '',
-    latitud: 0,
-    longitud: 0,
-    telefono: '',
-    nombre: ''
-  };
-  
+  puntoReciclaje : PuntoReciclajeDTO = new PuntoReciclajeDTO();
+ 
   constructor(private recyclingPoints : RecyclingPointsService,
               private mensaje: MensajeService,
-              private dialogo: MatDialog) { }
+              private dialogo: MatDialog,
+              private formBuilder : FormBuilder) { }
+
+  modificarForm = this.formBuilder.group({
+      id: [''],
+      nombre: [''],
+      horaAtencion: [''],
+      direccion: [''],
+      latitud: [''],
+      longitud: [''],
+      telefono: ['']
+  })
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -57,7 +62,8 @@ export class AdministrationComponent implements OnInit
   
 
   markerPositions: google.maps.LatLngLiteral[] = [];
-  addMarker(event: google.maps.MapMouseEvent) {
+  addMarker(event: google.maps.MapMouseEvent) 
+  {
     console.log(event)
     if (event.latLng != null)
     {
@@ -65,38 +71,25 @@ export class AdministrationComponent implements OnInit
       console.log(datos);
       this.pR.latitud = datos.lat;
       this.pR.longitud = datos.lng;
-      this.pR.direccion = "lat " + datos.lat + " - lng " + datos.lng;
       this.markerPositions = [];
       this.markerPositions.push(event.latLng.toJSON());
+      this.direccionpe(datos.lat, datos.lng);
     }
   }
 
-  guardarPunto()
+  direccionpe(lat : number, lng : number)
   {
-    this.pR.usuario_id = 1;
-    console.log(this.pR);
+    const geocoder = new google.maps.Geocoder();
+    const latlng = new google.maps.LatLng(lat, lng);
 
-    this.recyclingPoints.guardar(this.pR).subscribe(
-    { 
-      next: data =>
-      {
-        this.mensaje.MostrarMensaje(data?.mensaje);
-        this.listarPuntos();
-      }, 
-      error: error => this.mensaje.MostrarMensaje("Ocurrió un error!")
-    });
-
-
-  }
-
-  listarPuntos()
-  {
-    this.recyclingPoints.listar().subscribe(data=>
-    {
-      this.listPuntoReciclaje = data;
-      console.log(this.listPuntoReciclaje)
-      this.crearTabla(this.listPuntoReciclaje);
-    });
+  geocoder.geocode({ location: latlng }, (results, status) => {
+    if (status === 'OK' && results[0]) {
+      this.pR.direccion = results[0].formatted_address;
+      // this.addressElement.nativeElement.value = results[0].formatted_address;
+    } else {
+      console.error('Error al obtener la dirección: ', status);
+    }
+  });
   }
 
   crearTabla(data : PuntoReciclajeInterface[])
@@ -105,15 +98,83 @@ export class AdministrationComponent implements OnInit
     this.dataSource.paginator = this.paginator;
   }
 
-  seleccionar()
+  llenarData(punto : PuntoReciclajeInterface)
   {
-    let data = this.listPuntoReciclaje.find(elem => elem.id == this.prselect.id);
-    this.prselect.nombre = data.nombre;
-    this.prselect.direccion = data.direccion;
-    this.prselect.telefono = data.telefono;
-    this.prselect.horarioAtencion = data.horarioAtencion;
+    this.puntoReciclaje.id = punto.id;
+    this.modificarForm.get('nombre').setValue(punto.nombre);
+    this.modificarForm.get('horaAtencion').setValue(punto.horarioAtencion);
+    this.modificarForm.get('direccion').setValue(punto.direccion);
+    this.modificarForm.get('telefono').setValue(punto.telefono);
+    this.modificarForm.get('latitud').setValue(punto.latitud.toString());
+    this.modificarForm.get('longitud').setValue(punto.longitud.toString());
   }
 
+  guardarPunto()
+  {
+    this.pR.usuario_id = Number(localStorage.getItem('id'));
+    console.log(this.pR);
+
+    this.recyclingPoints.guardar(this.pR).subscribe(
+    { 
+      next: async data =>
+      {
+        await this.listarPuntos();
+        this.mensaje.MostrarMensaje(data?.mensaje);
+      }, 
+      error: error =>
+      {
+        if(error.error.mensaje != undefined)
+        {
+          this.mensaje.MostrarMensaje(error.error.mensaje); 
+          return;
+        }
+
+        this.mensaje.MostrarMensaje("Ocurrió un error, por favor intente más tarde!");
+      }
+    });
+
+
+  }
+
+  async listarPuntos()
+  {
+    await firstValueFrom(this.recyclingPoints.listar()).then(data=>
+    {
+      this.listPuntoReciclaje = data;
+      console.log(this.listPuntoReciclaje);
+      this.crearTabla(this.listPuntoReciclaje);
+    });
+  }
+
+  modificar()
+  {
+    this.puntoReciclaje.nombre = this.modificarForm.get('nombre').value.trim();
+    this.puntoReciclaje.horarioAtencion = this.modificarForm.get('horaAtencion').value.trim();
+    this.puntoReciclaje.direccion = this.modificarForm.get('direccion').value.trim();
+    this.puntoReciclaje.telefono = this.modificarForm.get('telefono').value.trim();
+    this.puntoReciclaje.latitud = Number(this.modificarForm.get('latitud').value.trim());
+    this.puntoReciclaje.longitud = Number(this.modificarForm.get('longitud').value.trim());
+    this.puntoReciclaje.usuario_id = Number(localStorage.getItem('id'));
+
+    console.log(this.puntoReciclaje);
+
+    this.recyclingPoints.actualizar(this.puntoReciclaje).subscribe(async data =>
+    {
+      await this.listarPuntos();
+      this.mensaje.MostrarMensaje(data?.mensaje);
+    }, error =>
+    {
+      if(error.error.mensaje != undefined)
+        {
+          this.mensaje.MostrarMensaje(error.error.mensaje); 
+          return;
+        }
+
+        this.mensaje.MostrarMensaje("Ocurrió un error, por favor intente más tarde!");
+    })
+    
+  }
+ 
   abrirModal(punto : PuntoReciclajeInterface)
   {
     const modal = this.dialogo.open(DeleteComponent, 
@@ -126,12 +187,21 @@ export class AdministrationComponent implements OnInit
       }
     })
     
-    modal.afterClosed().subscribe((mensaje : string) =>
+    modal.afterClosed().subscribe(async (mensaje : string) =>
     {
       // if (mensaje == undefined) return;
       if (mensaje != 'CONFIRMAR') return;
-      this.mensaje.MostrarMensaje(mensaje);
-    });
+      
+      let data = undefined;
+      await firstValueFrom(this.recyclingPoints.eliminar(punto.id)).then(async (data : any)=>
+      {
+        await this.listarPuntos();
+        this.mensaje.MostrarMensaje(data?.mensaje);
+      }, error =>
+      {
+        this.mensaje.MostrarMensaje("Ocurrio un error.");
+      });
 
+    });
   }
 }

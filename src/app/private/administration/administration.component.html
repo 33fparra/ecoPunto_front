@@ -77,30 +77,32 @@
        </div>
        <!-- /.card-header -->
        <div class="card-body">
-         <form>
+         <form [formGroup]="modificarForm">
+          <div class="form-group">
+            <label for="nuevoNombrePuntoModificar">Nuevo nombre:</label>
+            <input type="text" class="form-control" id="nuevoNombrePuntoModificar" placeholder="Ingrese el nuevo nombre del punto" formControlName="nombre">
+          </div>
            <div class="form-group">
-             <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-             <select class="form-control" id="selectPunto" [(ngModel)]="prselect.id" (change)="seleccionar()">
-               <option *ngFor="let puntoReciclaje of listPuntoReciclaje" [value]="puntoReciclaje.id">{{puntoReciclaje.nombre}}</option>
-             </select>
+             <label for="horarioAtencionModificar">Horario de Atención:</label>
+             <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto" formControlName="horaAtencion">
            </div>
            <div class="form-group">
-             <label for="nuevoNombrePunto">Nuevo nombre:</label>
-             <input type="text" class="form-control" id="nuevoNombrePunto" placeholder="Ingrese el nuevo nombre del punto" [(ngModel)]="prselect.nombre">
+             <label for="direccionModificar">Nueva dirección:</label>
+             <input type="text" class="form-control" id="direccionModificar" placeholder="Ingrese la nueva dirección del punto" formControlName="direccion">
            </div>
            <div class="form-group">
-             <label for="nuevaDireccionPunto">Nueva dirección:</label>
-             <input type="text" class="form-control" id="nuevaDireccionPunto" placeholder="Ingrese la nueva dirección del punto" [(ngModel)]="prselect.direccion">
-           </div>
-           <div class="form-group">
-             <label for="nuevoTelefonoPunto">Nuevo teléfono:</label>
-             <input type="text" class="form-control" id="nuevoTelefonoPunto" placeholder="Ingrese el nuevo teléfono" [(ngModel)]="prselect.telefono">
+             <label for="telefonoModificar">Nuevo teléfono:</label>
+             <input type="text" class="form-control" id="telefonoModificar" placeholder="Ingrese el nuevo teléfono" formControlName="telefono">
          </div>
          <div class="form-group">
-             <label for="nuevoHorarioPunto">Nuevo horario:</label>
-             <input type="text" class="form-control" id="nuevoHorarioPunto" placeholder="Ingrese el nuevo horario" [(ngModel)]="prselect.horarioAtencion">
+             <label for="latitudModificar">Nuevo latitud:</label>
+             <input type="text" class="form-control" id="latitudModificar" placeholder="Ingrese el nuevo latitud" formControlName="latitud">
          </div>
-         <button type="submit" class="btn" id="btn">Guardar cambios</button>
+         <div class="form-group">
+          <label for="longitudModificar">Nuevo longitud:</label>
+          <input type="text" class="form-control" id="longitudModificar" placeholder="Ingrese el nuevo longitud" formControlName="longitud">
+      </div>
+         <button type="submit" class="btn" id="btn" (click)="modificar()">Guardar cambios</button>
          <button type="button" class="btn" id="btnDos" data-dismiss="modal">Cancelar</button>
          </form>
        </div>
@@ -131,7 +133,7 @@
 
     <ng-container matColumnDef="direccion">
       <th mat-header-cell *matHeaderCellDef> Dirección </th>
-      <td mat-cell *matCellDef="let element"> dirección </td> <!-- {{element.direccion}}-->
+      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td> <!-- {{element.direccion}}-->
     </ng-container>
 
     <ng-container matColumnDef="latitud">
@@ -147,7 +149,7 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon aria-hidden="false" aria-label="Editar" class="editar">edit</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Editar" class="editar" (click)="llenarData(element)">edit</mat-icon>
         <mat-icon aria-hidden="false" aria-label="Eliminar" class="eliminar" (click)="abrirModal(element)">delete</mat-icon>
       </td>
     </ng-container>
