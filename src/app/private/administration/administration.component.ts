@@ -23,6 +23,10 @@ export class AdministrationComponent implements OnInit
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   zoom = 6;
 
+  tipodeUsuario: string = ""
+  nombUsuario:string=""
+  titleCab: string = ''
+
   pR : PuntoReciclajeDTO = new PuntoReciclajeDTO();
   listPuntoReciclaje : PuntoReciclajeInterface[] = [];
  
@@ -47,6 +51,10 @@ export class AdministrationComponent implements OnInit
               
   ngOnInit(): void {
     this.listarPuntos();
+    
+    this.tipodeUsuario = localStorage.getItem('TipUser')
+    this.nombUsuario = localStorage.getItem('user')
+    this.titleCab = ` ${this.tipodeUsuario} , ${this.nombUsuario} : `
   }
 
   

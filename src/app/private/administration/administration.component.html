@@ -1,7 +1,7 @@
   <app-navbar></app-navbar>
 
   <div class="container">
-    <h1>Panel de Administracion (aca igual la idea es que diga el rol de la perosna si es User o Admin)</h1>  
+    <h1>Panel de Administracion {{this.titleCab}}</h1>
   </div>
   
 
@@ -51,9 +51,8 @@
              <label for="telefonoPunto">Teléfono:</label>
              <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" [(ngModel)]="pR.telefono">
            </div>
-           <div class="mapa">
-            <google-map height="400px"
-              width="600px"
+           <div class="map-responsive">
+            <google-map 
               [center]="center"
               [zoom]="zoom"
               (mapClick)="addMarker($event)">
