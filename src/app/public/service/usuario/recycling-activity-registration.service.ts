@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ActividadReciclaje, ActividadReciclajeDTO } from '../../model/ActividadReciclaje';
 import { MaterialReciclable } from '../../model/Material';
 import { PuntoReciclajeYMaterial } from '../../model/PuntoReciclajeYMaterial';
+import { PuntoMaterialDTO } from '../../model/PuntoMaterial';
 
 
 const baseUrl = environment.HOST;
@@ -33,5 +34,9 @@ export class RecyclingActivityRegistrationService {
   historialReciclajePorUsuario(id : number)
   {
     return this.http.get<any>(baseUrl + '/' + 'actividadReciclaje' + '/' + 'historialReciclajePorUsuario/' + id);
+  }
+
+  guardarPuntoMaterial(puntoMaterialDTO: PuntoMaterialDTO): Observable<any> {
+    return this.http.post<any>(baseUrl + '/' + 'puntoMaterial' + '/' + 'guardar', puntoMaterialDTO);
   }
 }

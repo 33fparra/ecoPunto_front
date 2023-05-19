@@ -2,29 +2,33 @@
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Registro Punto de Material</h1>
-    <form id="reciclaje-form">
+    <form id="reciclaje-form" [formGroup]="formulario">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" required>
+            <input type="text" class="form-control" id="nombre" required formControlName="nombre">
         </div>
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <input type="number" class="form-control" id="descripcion" required>
-        </div>
-        <!-- <div class="form-group">
-                <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-                <select class="form-control" id="selectPunto" [(ngModel)]="prselect.id" (change)="seleccionar()">
-                  <option *ngFor="let puntoReciclaje of listPuntoReciclaje" [value]="puntoReciclaje.id">{{puntoReciclaje.nombre}}</option>
-                </select>
+            <input type="text" class="form-control" id="descripcion" required formControlName="descripcion">
         </div>
         <div class="form-group">
             <label for="selectPunto">Seleccionar punto de reciclaje:</label>
-            <select class="form-control" id="selectPunto" [(ngModel)]="prselect.id" (change)="seleccionar()">
-              <option *ngFor="let  of " [value]="">{{.nombre}}</option>
+            <select class="form-control" id="selectPunto" formControlName="reciclaje">
+                <option *ngFor="let puntoReciclaje of listPuntoReciclaje" [value]="puntoReciclaje.id">
+                    {{puntoReciclaje.nombre}}
+                </option>
             </select>
-        </div> -->
-      
-        <button type="submit" class="btn btn-primary" id="btn">Registrar Punto</button>
+        </div>
+        <div class="form-group">
+            <label for="selectMaterial">Seleccionar Material:</label>
+            <select class="form-control" id="selectMaterial" formControlName="material">
+                <<option *ngFor="let material of listaMateriales" [value]="material.materialReciclableId">
+                    {{material.nombreMaterialReciclable}}
+                </option>
+            </select>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary" id="btn" (click)="registrar()">Registrar Punto</button>
     </form>
 </div>
 

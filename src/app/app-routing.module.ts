@@ -10,6 +10,7 @@ import { RecyclableMaterialsSearchComponent } from './private/recyclable-materia
 import { RecyclingActivityRegistrationComponent } from './private/recycling-activity-registration/recycling-activity-registration.component';
 import { AdministrationComponent } from './private/administration/administration.component';
 import { UserManagementComponent } from './private/user-management/user-management.component';
+import { MaterialPointComponent } from './private/material-point/material-point.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'recycling-history', component: RecyclingHistoryComponent },
   { path: 'recyclable-materials-search', component: RecyclableMaterialsSearchComponent },
   { path: 'recycling-activity-registration', component: RecyclingActivityRegistrationComponent },
+  { path: 'point-material', component: MaterialPointComponent },
   { path: 'administration', component: AdministrationComponent },
   { path: 'user-management', component: UserManagementComponent },
 ];
